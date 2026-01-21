@@ -1,0 +1,144 @@
+:root{
+  --bg: #06142A;
+  --card: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.14);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.70);
+  --link: #4FC3F7;
+  --linkHover: rgba(79,195,247,0.85);
+  --max: 980px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a{ color: var(--link); text-decoration: none; }
+a:hover{ color: var(--linkHover); text-decoration: underline; }
+
+.shell{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.topbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.brand{
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.brand img{
+  width: 320px;
+  max-width: 50vw;
+  height: auto;
+  display: block;
+}
+
+.brand .name{
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+}
+
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 18px;
+}
+
+.h1{
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.tagline{
+  font-size: 18px;
+  color: var(--muted);
+  margin: 0 0 20px 0;
+}
+
+.meta{
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li{
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.list li:last-child{
+  border-bottom: none;
+}
+
+.article{
+  margin-top: 18px;
+  line-height: 1.7;
+  font-size: 18px;
+  color: rgba(255,255,255,0.90);
+}
+
+.article h1, .article h2, .article h3{
+  line-height: 1.25;
+  margin: 28px 0 10px;
+}
+
+.article h1{ font-size: 34px; }
+.article h2{ font-size: 26px; }
+.article h3{ font-size: 20px; }
+
+.article p{ margin: 0 0 14px; }
+
+.article blockquote{
+  margin: 18px 0;
+  padding: 12px 14px;
+  border-left: 3px solid rgba(79,195,247,0.8);
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+
+.article code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;
+  background: rgba(255,255,255,0.08);
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.article pre{
+  overflow: auto;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+}

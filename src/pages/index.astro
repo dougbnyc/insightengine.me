@@ -1,11 +1,22 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const title = "Insight Engine";
+const tagline = "Exploring advanced AI, human behavior, and the engineering of insight.";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={title}>
+  <section class="card">
+    <h1 class="h1">{title}</h1>
+    <p class="tagline">{tagline}</p>
+
+    <div class="nav" style="justify-content: flex-start; flex-wrap: wrap;">
+      <a href="https://www.youtube.com/@InsightEngine_Official" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://www.instagram.com/insightengineofficial/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.tiktok.com/@insightengineofficial" target="_blank" rel="noopener noreferrer">TikTok</a>
+      <a href="https://x.com/InsightEngineMe" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://www.linkedin.com/company/insightengineofficial/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="/articles/">Articles</a>
+    </div>
+  </section>
 </Layout>

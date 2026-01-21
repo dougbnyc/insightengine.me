@@ -1,4 +1,5 @@
 ---
+import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const articles = await getCollection("articles");
@@ -7,23 +8,20 @@ articles.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const fmt = (d) => d.toISOString().slice(0, 10);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Articles | Insight Engine</title>
-  </head>
-  <body>
-    <main>
-      <h1>Articles</h1>
-      <ul>
-        {articles.map((entry) => (
-          <li>
-            <a href={`/articles/${entry.slug}/`}>{entry.data.title}</a>
-            <span> — {fmt(entry.data.date)}</span>
-          </li>
-        ))}
-      </ul>
-    </main>
-  </body>
-</html>
+<Layout title="Articles | Insight Engine">
+  <section class="card" style="margin-bottom: 18px;">
+    <h1 class="h1" style="margin-bottom: 6px;">Articles</h1>
+    <div class="meta">Newest first</div>
+  </section>
+
+  <section class="card">
+    <ul class="list">
+      {articles.map((entry) => (
+        <li>
+          <a href={`/articles/${entry.slug}/`}>{entry.data.title}</a>
+          <span class="meta"> — {fmt(entry.data.date)}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Layout>
