@@ -1,22 +1,60 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "../layouts/layout.astro";
+import { getCollection } from "astro:content";
 
-const title = "Insight Engine";
-const tagline = "Exploring advanced AI, human behavior, and the engineering of insight.";
+const title = "Articles";
+
+// Load and sort newest-first
+const all = await getCollection("articles");
+const publishable = all
+  .filter((a) => a.data.status !== "Draft")
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Language ordering + labels
+const LANG_ORDER = ["en", "es", "pt-br"];
+const LANG_LABELS: Record<string, string> = {
+  en: "English",
+  es: "Español",
+  "pt-br": "Português (Brasil)",
+};
+
+// Group by language
+const byLang = publishable.reduce((acc, entry) => {
+  const lang = entry.data.language ?? "en";
+  (acc[lang] ??= []).push(entry);
+  return acc;
+}, {} as Record<string, typeof publishable>);
+
+// Stable language list for rendering
+const langs = [
+  ...LANG_ORDER.filter((l) => byLang[l]?.length),
+  ...Object.keys(byLang)
+    .filter((l) => !LANG_ORDER.includes(l))
+    .sort(),
+];
 ---
 
 <Layout title={title}>
-  <section class="card">
-    <h1 class="h1">{title}</h1>
-    <p class="tagline">{tagline}</p>
-
-    <div class="nav" style="justify-content: flex-start; flex-wrap: wrap;">
-      <a href="https://www.youtube.com/@InsightEngine_Official" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a href="https://www.instagram.com/insightengineofficial/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://www.tiktok.com/@insightengineofficial" target="_blank" rel="noopener noreferrer">TikTok</a>
-      <a href="https://x.com/InsightEngineMe" target="_blank" rel="noopener noreferrer">X</a>
-      <a href="https://www.linkedin.com/company/insightengineofficial/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="/articles/">Articles</a>
-    </div>
+  <section class="card" style="margin-bottom: 18px;">
+    <h1 class="h1" style="margin-bottom: 6px;">{title}</h1>
+    <div class="meta">Newest first, grouped by language</div>
   </section>
+
+  {langs.map((lang) => (
+    <section class="card" style="margin-bottom: 18px;">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+        <h2 style="margin: 0;">{LANG_LABELS[lang] ?? lang}</h2>
+        <div class="meta">{byLang[lang].length} article(s)</div>
+      </div>
+
+      <ul class="list" style="margin-top: 10px;">
+        {byLang[lang].map((article) => (
+          <li>
+            <a href={`/articles/${article.slug}/`}>{article.data.title}</a>
+            <span class="meta">{" — "}{article.data.date.toLocaleDateString("en-CA")}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
 </Layout>

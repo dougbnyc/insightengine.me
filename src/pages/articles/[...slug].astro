@@ -1,10 +1,9 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/layout.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const entries = await getCollection("articles");
-
   return entries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
@@ -13,16 +12,35 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-const date = entry.data.date.toISOString().slice(0, 10);
+
+const fmt = (d) => d.toISOString().slice(0, 10);
+
+const langLabel = (lang) => {
+  if (lang === "es") return "Espanol";
+  if (lang === "pt-br") return "Portugues (Brasil)";
+  return "English";
+};
+
+const language = entry.data.language || "en";
+const themes = Array.isArray(entry.data.themes) ? entry.data.themes : [];
+const tier = entry.data.tier || "standard";
 ---
 
 <Layout title={`${entry.data.title} | Insight Engine`}>
-  <section class="card">
-    <h1 class="h1" style="font-size: 34px; margin-bottom: 6px;">{entry.data.title}</h1>
-    <div class="meta">{date}</div>
+  <section class="card" style="margin-bottom: 18px;">
+    <h1 class="h1" style="margin-bottom: 6px;">{entry.data.title}</h1>
+    <div class="meta">
+      {fmt(entry.data.date)}
+      {" | "}
+      {langLabel(language)}
+      {themes.length ? ` | ${themes.join(", ")}` : ""}
+      {tier ? ` | ${tier}` : ""}
+    </div>
   </section>
 
-  <article class="article">
-    <Content />
-  </article>
+  <section class="card">
+    <article class="article">
+      <Content />
+    </article>
+  </section>
 </Layout>

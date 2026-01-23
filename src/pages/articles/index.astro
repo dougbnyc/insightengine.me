@@ -1,27 +1,57 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/layout.astro";
 import { getCollection } from "astro:content";
 
-const articles = await getCollection("articles");
-articles.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const title = "Articles";
 
-const fmt = (d) => d.toISOString().slice(0, 10);
+const all = await getCollection("articles");
+const articles = all.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+
+const LANG_ORDER = ["en", "es", "pt-br"] as const;
+
+const LANG_LABELS: Record<string, string> = {
+  en: "English",
+  es: "Español",
+  "pt-br": "Português (Brasil)",
+};
+
+const byLang = articles.reduce((acc, entry) => {
+  const lang = entry.data.language ?? "en";
+  (acc[lang] ??= []).push(entry);
+  return acc;
+}, {} as Record<string, typeof articles>);
+
+const langs = [
+  ...LANG_ORDER.filter((l) => byLang[l]?.length),
+  ...Object.keys(byLang)
+    .filter((l) => !LANG_ORDER.includes(l as any))
+    .sort(),
+];
 ---
 
 <Layout title="Articles | Insight Engine">
   <section class="card" style="margin-bottom: 18px;">
-    <h1 class="h1" style="margin-bottom: 6px;">Articles</h1>
-    <div class="meta">Newest first</div>
+    <h1 class="h1" style="margin-bottom: 6px;">{title}</h1>
+    <div class="meta">Newest first, grouped by language</div>
   </section>
 
-  <section class="card">
-    <ul class="list">
-      {articles.map((entry) => (
-        <li>
-          <a href={`/articles/${entry.slug}/`}>{entry.data.title}</a>
-          <span class="meta"> — {fmt(entry.data.date)}</span>
-        </li>
-      ))}
-    </ul>
-  </section>
+  {langs.map((lang) => (
+    <section class="card" style="margin-bottom: 18px;">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+        <h2 style="margin: 0;">{LANG_LABELS[lang] ?? lang}</h2>
+        <div class="meta">{byLang[lang].length} article(s)</div>
+      </div>
+
+      <ul class="list" style="margin-top: 10px;">
+        {byLang[lang].map((article) => (
+          <li>
+            <a href={`/articles/${article.slug}/`}>{article.data.title}</a>
+            <span class="meta">{" - "}{fmt(article.data.date)}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
 </Layout>
