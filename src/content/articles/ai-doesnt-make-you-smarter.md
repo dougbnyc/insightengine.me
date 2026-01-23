@@ -1,15 +1,33 @@
 ---
 title: AI Doesn’t Make You Smarter. How You Use It Might.
 date: 2026-01-18
-slug: ai-doesnt-make-you-smarter
 series: Insight Engine
 status: Canonical
-version: 1.1
+version: '"1.1"'
+language: en
+themes:
+  - tools-and-ai
+  - agency
+  - human-behavior
+  - learning
+tier: standard
+description: A systems-level examination of how AI tools amplify existing cognitive habits, distinguishing augmentation from substitution and clarifying where human responsibility must remain.
 ---
+<!-- Insight Engine Internal Commentary
+
+Broad appeal assessment:
+Yes
+
+Rationale:
+The article addresses a widely experienced but poorly articulated tension in contemporary technology use: the difference between delegating cognition and extending it. The patterns described apply across professions, education, communication, and decision making, independent of any specific AI tool or platform. Readers benefit from a clear framework for distinguishing augmentation from substitution at a moment when the distinction is socially and cognitively consequential.
+
+Editorial note:
+This is not a technology explainer or adoption guide. It is a systems level examination of how tools interact with human agency, judgment, and responsibility. The intent is to name durable patterns of use and misuse, not to argue for or against AI itself.
+
+-->
 ### ***Tools do not think.**
 
 People do — or they don’t.*
-# **AI Doesn’t Make You Smarter. How You Use It Might.**
 
 Artificial intelligence is often discussed as if it automatically increases human intelligence. That framing is convenient, but incomplete.
 

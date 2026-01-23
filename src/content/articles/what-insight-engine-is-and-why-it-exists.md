@@ -3,7 +3,16 @@ title: What Insight Engine Is, and Why It Exists
 date: 2026-01-20
 series: Insight Engine
 status: Canonical
-version: 1.0
+version: '"1.0"'
+language: en
+themes:
+  - systems
+  - learning
+  - agency
+  - accountability
+tier: foundational
+featuredOrder: 3
+description: An explanation of the reasoning, constraints, and principles behind Insight Engine as a disciplined framework for examining systems, assumptions, and second-order effects.
 ---
 <!-- Insight Engine Internal Commentary
 
@@ -19,13 +28,6 @@ This is not a personal origin story or brand manifesto. It is an explanation of 
 -->
   
 
-  
-
-What Insight Engine Is
-
-  
-
-  
 
 Insight Engine is a framework for examining how systems actually behave under real conditions.
 

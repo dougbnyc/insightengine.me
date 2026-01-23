@@ -3,8 +3,17 @@ title: About the Author
 date: 2026-01-21
 series: Insight Engine
 status: Canonical
-version: 1.0
+version: '"1.0"'
+language: en
+themes:
+  - systems
+  - agency
+  - accountability
+tier: foundational
+featuredOrder: 1
+description: Background, perspective, and governing assumptions behind Insight Engine.
 ---
+
 <!--
 Insight Engine Internal Commentary
 

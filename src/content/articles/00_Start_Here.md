@@ -1,11 +1,17 @@
 ---
-title: "00 Start Here"
+title: 00 Start Here
 date: 2026-01-20
 series: Insight Engine
 status: Canonical
-version: 1.0
+version: '"1.0"'
+language: en
+themes:
+  - systems
+  - agency
+tier: foundational
+featuredOrder: 0
+description: Orientation for new readers and a map of how to approach the Insight Engine corpus.
 ---
-
 <!-- Insight Engine Internal Commentary
 
 Broad appeal assessment:

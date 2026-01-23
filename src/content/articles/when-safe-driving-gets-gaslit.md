@@ -3,9 +3,18 @@ title: When Safe Driving Gets Gaslit
 date: 2026-01-21
 series: Insight Engine
 status: Canonical
-version: 1.3
+version: '"1.3"'
+language: en
+themes:
+  - systems
+  - human-behavior
+  - accountability
+  - risk
+  - institutions
+tier: standard
+description: |
+  A systems analysis of how rule-followers are socially penalized when formal rules diverge from behavioral norms, using driving as a case study in norm drift, peer enforcement, and legitimacy erosion.
 ---
-
 <!-- Insight Engine Internal Commentary
 
 Broad appeal assessment:
@@ -18,10 +27,6 @@ Editorial note:
 This is a systems-pattern article, not a safety PSA. Its value lies in naming and articulating the dynamics of norm drift, peer enforcement, and legitimacy erosion using driving as a case study. The most recent update closes a behavioral loop: not only are rule-followers punished, but even the machines designed to enforce rules neutrally are targeted once they become predictable.
 
 -->
-
-## **When Safe Driving Gets Gaslit**
-
-  
 
 Modern traffic culture in the U.S. contains a strange contradiction: people who follow the rules of the road are often treated like _they’re_ the problem.
 
