@@ -332,6 +332,3 @@ At scale, that’s not just dysfunction. It’s risk migration—where emotional
 
 > **Predictable safety behavior can become a liability when adversarial actors learn to game it.**
 
----
-
-Let me know if you’d like a downloadable file version, or to begin work on visual excerpts or companion short-form posts.
